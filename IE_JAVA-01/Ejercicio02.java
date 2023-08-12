@@ -14,30 +14,42 @@ public class Ejercicio02{
         int array []= new int [size];
         int secuencia = 1;
         int indice =0;
-        int aux =0;
+        int menor =0;
 
-        for ( int i =0; i<size; i++){
-            array[i] = secuencia;
-            secuencia = secuencia+1;
+        for(int i =0; i<size;i++){
+            array[i]=secuencia; 
+            secuencia=secuencia+1;
         }
-        
-        for(int fila =1; fila<=n; fila++){
-            for(int col=1; col<=n; col++){
-                indice = (fila-1) * n + (col-1);
-                if(fila%2!=0){
+
+        for(int fila =0; fila<n; fila++){
+            
+            if(fila%2==0){
+                
+                for(int col=0; col<n; col++){
+                    indice = fila * n + col;
                     System.out.print("[ "+array[indice]+" ]"); 
-                }else if(fila%2==0){
-                    for(int i=1; i<=n;i++){
-                        while(array[indice]>array[indice+1]){
-                            aux = array [indice];
-                            array[indice]=array[indice+1];
-                            array[indice+1]=aux;
-                        }
-                        System.out.print("[ "+array[indice]+" ]");
-                    }
-                }    
+                }
+                System.out.println();
+            }else if(fila%2!=0){ 
+                for(int col=0; col<n; col++){
+                    indice = fila * n + col;
+                    for(int i = 0; i < n; i++){
+                        menor = array[indice];
+
+                        if (array[indice] < menor){
+                            menor = array[i];
+                        }else{if (array[indice] > menor){
+                            menor = menor;
+                        }      
+                    } 
+                    /* sorry oscar lo intente durante 4 horas y no pude 
+                    si me disculpa me voy a llorar  */
+                    System.out.print("[ "+array[indice]+" ]"); 
+                }
+                System.out.println();
             }
-            System.out.println(); 
+           
         }         
     }
+}
 }
