@@ -1,21 +1,39 @@
+import java.util.Scanner;
+
 public class Principal{
     public static void main(String [] args){
-        Persona persona1 = new Persona(1088340376, "Oscar", "Loaiza", 85, 185, 300.5);
-        Persona persona2= new Persona(904581112, "karem", "villegas", 25, 155, 60.8);
+        Scanner teclado = new Scanner(System.in);
+        
+        Persona array_usuarios [] = new Persona [9]; 
 
-        // System.out.println("Atributo cedula " + persona1.cedula);   esta forma se puede usar solmente cuando los atributos son publicos
-        System.out.println("Metodo getCedula: " + persona1.getCedula());
+        for(int i=0; i<10; i++){
+            System.out.println("Ingrese los datos para el usuario N "+(i+1)); 
 
-        persona1.setCedula(303033);
-        System.out.println("Metodo getCedula: " + persona1.getCedula());
+            System.out.print("Ingrese la cedula: "); 
+            int cedula = Integer.parseInt(teclado.nextLine());
 
-        persona1.imprimirEstado();
-        persona2.imprimirEstado();
+            System.out.print("Ingrese los nombres: "); 
+            String nombres = teclado.nextLine(); 
 
-        persona1.actividadFisica(80);
-        persona2.actividadFisica(30);
+            System.out.print("Ingrese los apellidos: ");
+            String apellidos = teclado.nextLine();
+            
+            System.out.print("Ingrese la edad: ");
+            int edad = Integer.parseInt(teclado.nextLine());
+            
+            int altura = Integer.parseInt(teclado.nextLine());
+            System.out.print("Ingrese la altura: ");
+            
+            double peso = Double.parseDouble(teclado.nextLine()); 
+            System.out.print("Ingrese el peso: ");
 
-        persona1.imprimirEstado();
-        persona2.imprimirEstado();
+            Persona persona = new Persona(cedula, nombres, apellidos, edad, altura, peso);
+            array_usuarios[i] = persona;
+        }
+
+        for (Persona persona : array_usuarios) {
+            persona.imprimirEstado();
+        }
+       
     }
 }
