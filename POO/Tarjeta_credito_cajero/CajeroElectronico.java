@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.Date; 
 
 public class CajeroElectronico {
@@ -12,6 +13,12 @@ public class CajeroElectronico {
     String Usuario_admi; 
     String Clave_admi;
     String Transacciones []; 
+
+    public String entradaTexto() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese texto: ");
+        return scanner.nextLine();
+    }
 
     public CajeroElectronico(int Limite_dinero, int Dinero_disponible, int Cant_10, int Cant_20, int Cant_50, int Cant_100, String Nombre_banco, String Usuario_admi, String Clave_admi){
         this.Limite_dinero = Limite_dinero;
@@ -33,6 +40,90 @@ public class CajeroElectronico {
         this.Clave_admi = Clave_admi;
         Transacciones = new String [100]; 
     }
+
+
+
+
+/*     public int getLimiteDinero(){
+        return Limite_dinero;
+    }
+
+    public int getDineroDisponible(){
+        return Dinero_disponible;
+    }
+
+    public int getCant10(){
+        return Cant_10;
+    }
+
+    public int getCant20(){
+        return Cant_20;
+    }
+
+    public int getCant50(){
+        return Cant_50;
+    }
+
+    public int getCant100(){
+        return Cant_100;
+    } 
+
+    public String getNombreBanco(){
+        return Nombre_banco;
+    }
+
+    public String getUsuarioAdmi(){
+        return Usuario_admi;
+    }
+
+    public String getClaveAdmi(){
+        return Clave_admi;
+    }  */
+
+
+
+
+
+
+   /*  public int setLimiteDinero( int dato){
+        Limite_dinero = dato;
+    }
+
+    public int setDineroDisponible( int dato){
+        Dinero_disponible = dato;
+    }
+
+    public int setCant10( int dato){
+        Cant_10 = dato;
+    }
+
+    public int setCant20( int dato){
+        Cant_20 = dato;
+    }
+
+    public int setCant50( int dato){
+        Cant_50 = dato;
+    }
+
+    public int setCant100( int dato){
+        Cant_100 = dato;
+    } 
+
+    public String setNombreBanco(String dato){
+        Nombre_banco = dato;
+    }
+
+    public String setUsuarioAdmi(String dato){
+        Usuario_admi = dato;
+    }
+
+    public String setClaveAdmi(String dato){
+        Clave_admi = dato;
+    }  
+
+
+ */
+
 
     public boolean abastecerCajero(int Cant_10, int Cant_20, int Cant_50, int Cant_100){
 
@@ -79,78 +170,7 @@ public class CajeroElectronico {
         }
     }
 
-    /* public int getTotalDinero(){
-        return Total_dinero;
-    }
-
-    public int getDinero_disponible(){
-        return Dinero_disponible;
-    }
-
-    public int getCant_10(){
-        return Cant_10;
-    }
-
-    public int getCant_20(){
-        return Cant_20;
-    }
-
-    public int getCant_50(){
-        return Cant_50;
-    }
-
-    public int getCant_100(){
-        return Cant_100;
-    } 
-
-    public String getNombre_banco(){
-        return Nombre_banco;
-    }
-
-    public String getUsuario_admi(){
-        return Usuario_admi;
-    }
-
-    public String getContraseña_admi(){
-        Contraseña_admi;
-    } 
-
-
-    public int setTotalDinero(dato){
-        Total_dinero = dato;
-    }
-
-    public int setDinero_disponible(dato){
-        Dinero_disponible = dato;
-    }
-
-    public int setCant_10(dato){
-        Cant_10;
-    }
-
-    public int setCant_20(dato){
-        Cant_20 = dato;
-    }
-
-    public int setCant_50(dato){
-        Cant_50 = dato;
-    }
-
-    public int setCant_100(dato){
-        Cant_100 = dato;
-    } 
-
-    public String setNombre_banco(dato){
-        Combre_banco = dato;
-    }
-
-    public String setUsuario_admi(dato){
-        Usuario_admi = dato;
-    }
-
-    public String setContraseña_admi(dato){
-        Contraseña_admi = dato;
-    }  */
+    
     
     public void imprimirDetalle(){
         System.out.println();
@@ -175,6 +195,21 @@ public class CajeroElectronico {
         System.out.println("---------------------------------------");
             
 
+    }
+
+    public void cambiarClaveAdmin(String Clave_admi){
+        System.out.print("=>Ingrese la clave del administrador: ");
+        String Confirmar_clave = entradaTexto(); 
+        System.out.println();
+        if(Confirmar_clave==Clave_admi){
+            System.out.print("=>Ingrese la nueva clave del usuario administrador");
+            String new_clave_admin = entradaTexto();
+
+            Clave_admi=new_clave_admin;
+            System.out.println("----------NUEVA CLAVE GUARDADA----------");
+        }else{
+            System.out.println("=>La clave ingresada no coincide con ninguna cuenta administrador ");
+        }
     }
     
 }

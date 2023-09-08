@@ -13,7 +13,7 @@ public class Principal {
         cajero2.imprimirDetalle();
 
 
-        cajero2.abastecerCajero(10,30,10,8);
+        cajero2.cambiarClaveAdmin(123pc4);
 
         cajero2.imprimirDetalle();
     }
