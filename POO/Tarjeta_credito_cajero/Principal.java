@@ -10,11 +10,12 @@ public class Principal {
         cajero1.imprimirDetalle();
         CajeroElectronico cajero2 = new CajeroElectronico (10000000,"platukis2","paoblina","123pc4");
 
-        cajero2.imprimirDetalle();
+        TarjetaDebito tarjeta1 = new TarjetaDebito ("karen","1111 1111 1111 1111", "bancolombia", "2210",5000000,300000);
 
+        cajero1.consignarDineroTarjeta(tarjeta1, "2210",2,5,1,1); 
 
-        cajero2.cambiarClaveAdmin(123pc4);
+        cajero1.imprimirDetalle(); 
 
-        cajero2.imprimirDetalle();
+        
     }
 }
