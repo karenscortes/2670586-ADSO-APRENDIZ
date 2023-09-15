@@ -184,5 +184,58 @@ public class CajeroElectronico {
         }
     }
 
+
+
+    public void retirarDineroTarjeta(TarjetaDebito tarjeta, String clave, int Cant_10, int Cant_20, int Cant_50, int Cant_100){
+        int monto = (Cant_10*10000)+(Cant_20*20000)+(Cant_50*50000)+(Cant_100*100000);
+        if(tarjeta.validarClave(clave)){
+
+            if(tarjeta.validarEstado()){
+
+                if(monto>0){
+
+                    if(monto <= tarjeta.getDineroPermitidoRetirar()){
+                        tarjeta.disminuirSaldo(monto,clave); 
+                        Dinero_disponible -= monto; 
+                        
+                        this.Cant_10 -= Cant_10; 
+                        this.Cant_20 -= Cant_20; 
+                        this.Cant_50 -= Cant_50; 
+                        this.Cant_100 -= Cant_100; 
+
+                        System.out.println("----------REALIZADO RETIRO DINERO----------");  
+                        registarTransaccion("HISTORIAL",tarjeta.getNumero(), monto , "REALIZADO");
+                    }else{
+                        System.out.println("----------ACCESO DENEGADO RETIRO DINERO----------");  
+                        registarTransaccion("HISTORIAL",tarjeta.getNumero(), monto , "ERROR LIMITE DE CAJERO EXEDIDA");
+                    }
+                }else{
+                    System.out.println("----------ACCESO DENEGADO RETIRO DINERO----------");  
+                    registarTransaccion("HISTORIAL",tarjeta.getNumero(), monto , "ERROR MONTO");
+                }
+            }else{
+                System.out.println("----------ESTADO IMCORRECTO----------");  
+                registarTransaccion("HISTORIAL",tarjeta.getNumero(), monto , "ERROR ESTADO");
+            }
+
+        }else{
+            System.out.println("----------ACCESO DENEGADO----------");  
+            registarTransaccion("HISTORIAL",tarjeta.getNumero(), monto , "ERROR CLAVE");
+        }
+    } 
+
+
+    public void consultarSaldoTarjeta(TarjetaDebito tarjeta, String clave){
+        if(tarjeta.validarClave(clave)){
+            System.out.println("----------SALDO DISPONIBLE----------");
+            System.out.println("----------"+tarjeta.getDineroTarjeta()+"----------");
+        }else{
+            System.out.println("----------ACCESO DENEGADO----------");  
+        }
+    }
+
+
+    
+
     
 }

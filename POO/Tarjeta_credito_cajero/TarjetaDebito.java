@@ -90,26 +90,27 @@ public class TarjetaDebito{
         if(pass.equals(clave)){
             if(monto>0 && monto<Dinero_permitido_retirar){ 
                 if(monto<=Dinero_tarjeta){
-                    Dinero_tarjeta -= monto; 
+                    Dinero_tarjeta = Dinero_tarjeta - monto; 
                     System.out.println("----------TRANSACCION EXITOSA----------");  
-                    registarTransaccion("AUMENTO SALDO", monto , "REALIZADA");
+                    registarTransaccion("DISMINUIR SALDO", monto , "REALIZADA");
                     return true;
                 }else{
                     System.out.println("----------MONTO MAYOR A SALSO DISPONIBLE----------");  
-                    registarTransaccion("AUMENTO SALDO", monto , "ERROR");
+                    registarTransaccion("DISMINUIR SALDO", monto , "ERROR");
                     return false;
                 }
             }else{
                 System.out.println("----------MONTO MAYOR AL PERMITIDO RETIRAR----------");  
-                registarTransaccion("AUMENTO SALDO", monto , "ERROR");
+                registarTransaccion("DISMINUIR SALDO", monto , "ERROR");
                 return false;
             }
         }else{
             System.out.println("----------TRANSACCION FALLIDA CLAVE INCORRECTA----------");  
-            registarTransaccion("AUMENTO SALDO", monto , "ERROR");
+            registarTransaccion("DISMINUIR SALDO", monto , "ERROR");
             return false; 
         }
     }
+
 
     public int getSaldo(String pass){
         if(pass.equals(clave)){
@@ -137,7 +138,16 @@ public class TarjetaDebito{
         return Numero_tarjeta;
     }
 
-     public boolean validarEstado(){
+    public int getDineroPermitidoRetirar(){
+        return Dinero_permitido_retirar;
+    } 
+
+    public int getDineroTarjeta(){
+        return Dinero_tarjeta;
+    }
+
+
+    public boolean validarEstado(){
         if(Estado.equals("ACTIVO")){
             return true; 
         }else{
