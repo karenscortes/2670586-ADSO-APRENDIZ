@@ -16,13 +16,10 @@ public class Principal {
 
         cajero1.imprimirDetalle(); 
 
-        cajero1.retirarDineroTarjeta(tarjeta1, "2210",2,5,1,1); 
-
-        cajero1.imprimirDetalle(); 
-
+        cajero1.retirarDineroTarjeta(tarjeta1, "2210",0,0,0,1); 
+        tarjeta1.verHistorialTarjeta("2210");
         cajero1.consultarSaldoTarjeta(tarjeta1, "2210");
 
-        tarjeta1.verHistorialTarjeta("2210");
         
     }
 }

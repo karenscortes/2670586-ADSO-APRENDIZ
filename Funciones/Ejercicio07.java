@@ -5,7 +5,7 @@ public class Ejercicio07{
     public static void main(String[] args){
         int array [] = new int [100]; 
         array = llenarArray(array); 
-        imprimirArreglo(array);
+        
     }
 
     public static int [] llenarArray(int [] array){
@@ -17,9 +17,4 @@ public class Ejercicio07{
         return array;
     }
 
-    public static void imprimirArreglo(int [] array){
-        for(int i=0; i<array.length; i++){
-            System.out.print(array[i]+", ");
-        }
-    }
 }

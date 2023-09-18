@@ -3,20 +3,21 @@ import java.util.Scanner;
 public class Ejercicio09{
 
     public static void main(String[] args){
-        System.out.println("numero menor = "+ nMenor(2,21,8) ); 
-        System.out.println("numero menor = "+ nMenor(4,2,12) ); 
-        System.out.println("numero menor = "+ nMenor(10,2,9) ); 
+
+        int array [] = {2,4,5,8,1}; 
+        int minimo = nMenor(array);
+
+        System.out.println("El numero menor es: "+minimo );
     }
 
-    public static int nMenor(int a, int b, int c){
-        int menor =0;
-        if(a<b && a<c){
-            menor = a; 
-        }else if(b<c && b<a){
-            menor = b; 
-        }else if(c<a && c<b){
-            menor = c; 
+    public static int nMenor(int [] array){
+        int menor =100; 
+        for(int i=0; i<array.length; i++){
+            if(array[i]<menor){
+                menor=array[i]; 
+            }
         }
         return menor;
+        
     }
 }
