@@ -4,9 +4,9 @@ public class Ejercicio22{
 
     public static void main(String[] args){
 
-        int cantidad = 4;
-        int array [] = new int [cantidad]; 
-        array =primoArreglo(array,cantidad);
+        int cantidad = 10;
+        int int array []= new int [];
+        array = arregloPrimo(10);
 
         System.out.println("El array llenado con numeros primos: ");
         for (int i = 0; i < cantidad; i++) {
@@ -17,27 +17,24 @@ public class Ejercicio22{
         }
     }
 
-    public static int [] primoArreglo(int [] array, int cantidad){
+    public static int [] arregloPrimo(int cantidad){
+        int array [] = new int [cantidad];
+        int indice =0;
         int aleatorio=0;
-        int primo=0; 
-        int divisores=0;
-        while(primo < cantidad){
-            aleatorio = (int)(Math.random()*(100-2+1)-2);
-            for(int i =1; i<=aleatorio;i++ ){
-                if(aleatorio%i == 0){
+        while(indice < cantidad){
+            aleatorio = (int)(Math.random()*1000);
+            int divisores=0;
+            for(int i =1; i<= aleatorio;i++ ){
+                if(aleatorio %i == 0){
                     divisores = divisores +1; 
                 } 
             }
 
             if(divisores == 2){
-                primo = primo+1; 
-                
-                for(int i=0; i<array.length; i++){
-                    array[i]= aleatorio;
-                }
+                array[indice] = aleatorio;
+                indice++;
             }
 
-        
         }   
         return array;
     }
