@@ -5,6 +5,9 @@ public class Ejercicio07{
     public static void main(String[] args){
         int array [] = new int [100]; 
         array = llenarArray(array); 
+        for(int i=0; i<array.length;i++){
+            
+        }
         
     }
 
