@@ -3,31 +3,46 @@ import java.util.Scanner;
 public class Ejercicio03{
 
     public static void main(String [] arg){ 
-        Scanner teclado = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         
         System.out.println("Bienvenido a nuestro sistema");  
 
-        System.out.print("-> Ingrese valor total a financiar = "); 
-        int capital = teclado.nextInt();  
+        System.out.print("Ingrese el valor total a financiar: ");
+        double valorTotal = scanner.nextDouble();
 
-        System.out.print("-> Ingrese valor de la tasa de interes fija = "); 
-        int tasa_interes = teclado.nextInt();  
+        System.out.print("Ingrese la tasa de intereses: ");
+        double tasaInteres = scanner.nextDouble();
 
-        System.out.print("-> Ingrese un numero de cuotas mensuales: "); 
-        int n_cuotas = teclado.nextInt(); 
+        System.out.print("Ingrese la cantidad de cuotas: ");
+        int cantidadCuotas = scanner.nextInt();
+        
+        tasaInteres = tasaInteres/100;
+        double tasaMensual = tasaInteres / 12.0;
+        double cuotaMensual = valorTotal * (tasaMensual / (1 - Math.pow(1 + tasaMensual, -cantidadCuotas)));
 
-        float interes = tasa_interes/100;
-        float cuadrado =(float) (Math.pow((1+tasa_interes),n_cuotas*-1));
-        float pago = (capital * tasa_interes)/(1-(cuadrado)); 
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("| Cuota | Cuota Mensual | Interes | Abono a Capital | Deuda Total |");
+        System.out.println("--------------------------------------------------------------------");
 
-        float cm = capital *(1+interes); 
-        float intereses = cm-capital; 
+        double saldoPendiente = valorTotal;
+        for (int i = 1; i <= cantidadCuotas; i++) {
+            double interesMensual = saldoPendiente * tasaMensual;
+            double abonoCapital = cuotaMensual - interesMensual;
+            saldoPendiente -= abonoCapital;
 
-        System.out.println("-> pago "+pago); 
-        System.out.println("-> interes "+cm); 
+            String cuotaMensualStr = String.format("%.2f", cuotaMensual);
+            String interesMensualStr = String.format("%.2f", interesMensual);
+            String abonoCapitalStr = String.format("%.2f", abonoCapital);
+            String saldoPendienteStr = String.format("%.2f", saldoPendiente);
 
+            System.out.print("    "+i + "      ");
+            System.out.print("$ " + cuotaMensualStr + "      ");
+            System.out.print("$ " + interesMensualStr + "        ");
+            System.out.print("$ " + abonoCapitalStr + "       ");
+            System.out.print("$ " + saldoPendienteStr + "        ");
 
-
-
+            System.out.println();
+        }
+        System.out.println("--------------------------------------------------------------------");
     }
 }
