@@ -11,10 +11,10 @@ public class Ejercicio03{
         int cantidad = teclado.nextInt(); 
 
         int aleatorio = 0; 
-        int divisores = 0;
         int primo =0; 
 
         while(primo < cantidad){
+            int divisores = 0;
             aleatorio = (int)(Math.random()*(100-2+1)-2);
             for(int i =1; i<=aleatorio;i++ ){
                 if(aleatorio%i == 0){

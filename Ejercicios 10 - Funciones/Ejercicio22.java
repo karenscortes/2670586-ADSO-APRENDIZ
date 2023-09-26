@@ -5,7 +5,7 @@ public class Ejercicio22{
     public static void main(String[] args){
 
         int cantidad = 10;
-        int int array []= new int [];
+        int array []= new int [cantidad];
         array = arregloPrimo(10);
 
         System.out.println("El array llenado con numeros primos: ");
