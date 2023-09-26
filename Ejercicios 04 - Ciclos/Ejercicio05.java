@@ -5,7 +5,7 @@ public class Ejercicio05{
     public static void main(String [] arg){ 
         Scanner teclado = new Scanner(System.in);
 
-        System.out.print("-> Ingrese la opcion que desee "); 
+        System.out.print("-> Ingrese hasta que distancia desea la sucesion "); 
         int numero = teclado.nextInt(); 
 
         int ante=0; 
