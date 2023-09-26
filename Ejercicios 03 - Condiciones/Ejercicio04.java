@@ -6,7 +6,7 @@ public class Ejercicio04{
         Scanner teclado = new Scanner(System.in);
 
         
-        System.out.println("Biembenido a nuestro sistema");  
+        System.out.println("Bienvenido a nuestro sistema");  
 
         System.out.print("Ingrese la primera nota "); 
         float n1 = teclado.nextFloat();   

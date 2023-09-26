@@ -6,7 +6,7 @@ public class Ejercicio10{
         Scanner teclado = new Scanner(System.in);
 
         
-        System.out.println("Biembenido a nuestro sistema");  
+        System.out.println("Bienvenido a nuestro sistema");  
 
         System.out.print("Ingrese su fecha de nacimiento (ddmmaaaa) "); 
         int nacimiento = teclado.nextInt();   

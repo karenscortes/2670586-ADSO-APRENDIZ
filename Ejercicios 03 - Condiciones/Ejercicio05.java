@@ -6,9 +6,9 @@ public class Ejercicio05{
         Scanner teclado = new Scanner(System.in);
 
         
-        System.out.println("Biembenido a nuestro sistema");  
+        System.out.println("Bienvenido a nuestro sistema");  
 
-        System.out.print("Ingrese un anio "); 
+        System.out.print("Ingrese un year "); 
         int year = teclado.nextInt();   
 
         if(year%4==0 && year%100!=0 || year%400==0){
