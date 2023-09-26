@@ -6,7 +6,7 @@ public class Ejercicio10{
         Scanner teclado = new Scanner(System.in);
 
         
-        System.out.println("Biembenido a nuestro sistema");  
+        System.out.println("Bienvenido a nuestro sistema");  
 
         System.out.print("Ingrese la nota de matematicas: "); 
         float mate = teclado.nextFloat();   

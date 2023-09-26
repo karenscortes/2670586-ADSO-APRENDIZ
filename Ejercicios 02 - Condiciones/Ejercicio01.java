@@ -6,7 +6,7 @@ public class Ejercicio01{
         Scanner teclado = new Scanner(System.in);
 
         
-        System.out.println("Biembenido a nuestro sistema");  
+        System.out.println("Bienvenido a nuestro sistema");  
 
         System.out.print("Ingrese su edad "); 
         int edad = teclado.nextInt();   
