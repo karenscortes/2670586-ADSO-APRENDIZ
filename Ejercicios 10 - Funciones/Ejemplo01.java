@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Ejemplo01{
 
     public static void main(String[] args){
-        /* System.out.println("suma = "+ sumar(3,6) ); 
+        System.out.println("suma = "+ sumar(3,6) ); 
         System.out.println("suma = "+ sumar(4,-2) ); 
         System.out.println("suma = "+ sumar(-10,-3) ); 
 
@@ -20,7 +20,7 @@ public class Ejemplo01{
         System.out.println("division = "+ dividir(4,2) ); 
         System.out.println("division = "+ dividir(10,2) ); 
 
-        saludarClico(4);  */ 
+        saludarClico(4);  
 
         int array [] = new int [100]; 
         array = llenarArray(array); 
