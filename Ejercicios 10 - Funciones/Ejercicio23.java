@@ -1,10 +1,6 @@
 public class Ejercicio23 {
 
-    public static void main(String[] args) {
-
-        double capitalInicial = 0; 
-        double tasaInteres = 0;     
-        int periodos = 0;               
+    public static void main(String[] args) {          
 
         double montoFinal = calcularMontoFinal(10000,5,3);
 
