@@ -83,9 +83,80 @@ public class Perro {
 
         peso = peso + ((double)gramos/1000); 
 
-        energia = energia + (gramos/100);
+        if(gramos<=250){
+            energia = energia + (gramos/100);
+        }else if(gramos>=250){
+            energia = energia - (gramos/100);
+        } 
+
+        if(energia>100){
+            energia = 100; 
+        }
+        if(energia<11){
+            System.out.println("|-----------------------------------|");
+            System.out.println(" SU PERRO ESTA RENDIDO DEJELO DORMIR ");
+            System.out.println("|-----------------------------------|");
+        }
+        if(energia<=0){
+            energia = 1;
+        }
+    } 
+
+    public void jugar(int minutos){
+
+        energia = energia + (minutos/60);
+
+        if(energia>100){
+            energia = 100; 
+        }
+        if(energia<11){
+            System.out.println("|-----------------------------------|");
+            System.out.println(" SU PERRO ESTA RENDIDO DEJELO DORMIR ");
+            System.out.println("|-----------------------------------|");
+        }
+        if(energia<=0){
+            energia = 1;
+        }
+    
+    }
+
+    public void defecar(int gramos){
+        peso = peso - ((double)gramos/1000); 
     }
     
+    public void dormir(int minutos){
+        minutos = minutos / 60; 
+        if(minutos>20 || minutos<12){
+            energia = energia - minutos; 
+        }else if(minutos<=20 && minutos>=12){
+            energia = energia + minutos; 
+        }
+
+        if(energia>100){
+            energia = 100; 
+        }
+        if(energia<11){
+            System.out.println("|-----------------------------------|");
+            System.out.println(" SU PERRO ESTA RENDIDO DEJELO DORMIR ");
+            System.out.println("|-----------------------------------|");
+        }
+        if(energia<=0){
+            energia = 1;
+        }
+    }
+
+    public void ladrar(int ladridos){
+        energia = energia - ladridos;
+
+        if(energia<11){
+            System.out.println("|-----------------------------------|");
+            System.out.println(" SU PERRO ESTA RENDIDO DEJELO DORMIR ");
+            System.out.println("|-----------------------------------|");
+        }
+        if(energia<=0){
+            energia = 1;
+        }
+    }
 
 
 

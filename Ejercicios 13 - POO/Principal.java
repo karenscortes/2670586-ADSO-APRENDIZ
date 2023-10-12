@@ -13,10 +13,14 @@ public class Principal{
                         pertenece a la clase.
                         se representan como funciones  */ 
 
-        Perro perro1= new Perro("Roxi","Bella",24,"Shih tzu",30.6,85); 
+        Perro perro1= new Perro("Roxi","Bella",24,"Shih tzu",30.6,10); 
         Perro perro2= new Perro("Remi","Karen",60,"Pastor aleman",49.4,65);
 
-        perro1.comer(800);
+        perro1.comer(300);
+
+        perro1.imprimir(); 
+
+        perro1.dormir(240); 
 
         perro1.imprimir(); 
     }
