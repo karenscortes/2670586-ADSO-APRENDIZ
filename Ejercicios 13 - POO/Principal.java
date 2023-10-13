@@ -14,7 +14,8 @@ public class Principal{
                         se representan como funciones  */ 
 
         Perro perro1= new Perro("Roxi","Bella",24,"Shih tzu",30.6,10,60); 
-        Perro perro2= new Perro("Remi","Karen",60,"Pastor aleman",49.4,65,50);
+        Perro perro2= new Perro("Remi","Karen",60,"Pastor aleman",49.4,65,50); 
+
 
         perro1.comer(300);
 

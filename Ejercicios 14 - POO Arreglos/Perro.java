@@ -1,12 +1,12 @@
 public class Perro {
 
-    private String nombre; 
-    private String propietario; 
-    private int edad; 
-    private String raza; 
-    private double peso; 
-    private int energia; 
-    private int hambre;
+    public String nombre; 
+    public String propietario; 
+    public int edad; 
+    public String raza; 
+    public double peso; 
+    public int energia; 
+    public int hambre;
 
     public Perro(String nombre, String propietario, int edad, String raza, double peso, int energia, int hambre){
         this.nombre = nombre; 
