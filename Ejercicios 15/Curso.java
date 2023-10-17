@@ -53,7 +53,7 @@ public class Curso {
         System.out.println("|          DETALLE CURSO        |");
         System.out.println("|-------------------------------|");
         System.out.println("|                               |");
-        System.out.println("|  Codigo: "+codigo             "|");
+        System.out.println("|  Codigo: "+codigo +            "|");
     }
     
 }
