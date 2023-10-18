@@ -47,6 +47,16 @@ public class Curso {
         duracionHoras = dato; 
     } 
 
+    int indiceTema = 0; 
+    int indiceCurso = 0;
+    int size = 99;
+    Curso array [] = new Curso [size];
+
+    public void agrgarCurso(Curso curso){
+        array[indiceCurso]=curso;
+        indiceCurso++; 
+        size--;
+    }
 
     public void imprimir(){
         System.out.println();
@@ -58,6 +68,12 @@ public class Curso {
         System.out.println("|  Nombre: "+nombre +"                        |");
         System.out.println("|  Area conocimiento: "+areaConocimiento +"       |");
         System.out.println("|  Duracion: "+duracionHoras+"                      |");
+        System.out.println("|  Temas:                              |");
+        for(int i=0; i<temas.length; i++){
+            if(temas[i]!=null){
+               System.out.println("|            "+temas[i]+"              |");
+            }
+        }
         System.out.println("|--------------------------------------|");
         System.out.println();
     } 
@@ -77,6 +93,20 @@ public class Curso {
         } 
         System.out.println("|--------------------------------------|");
         System.out.println();
+    } 
+
+    public void editar(String newnombre, String area, int duracion){
+        nombre = newnombre; 
+        areaConocimiento = area; 
+        duracionHoras = duracion; 
+        System.out.println();
+        System.out.println("La informacion del curso ha sido actualizada exitosamente");
+        System.out.println();
+    }
+
+    public void agregarTema(String tema){
+        temas[indiceTema]=tema;
+        indiceTema++;
     }
     
 }
