@@ -48,35 +48,9 @@ public class Curso {
     } 
 
     int indiceTema = 0; 
-    int indiceCurso = 0;
-    int size = 99;
-    Curso array [] = new Curso [size];
+    
 
-    public void agrgarCurso(Curso curso){
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null && array[i].getCodigo().equals(curso.getCodigo())) {
-                System.out.println("-> El código ya corresponde a un curso existente");
-            
-            }else{
-                array[posicionInsercion] = curso;
-                indiceCurso++;
-                size--;
-
-                System.out.println("-> El curso ha sido agregado correctamente");
-            }
-        }
-
-        /* array[posicionInsercion] = curso;
-        indiceCurso++;
-        size--;
-
-        System.out.println("-> El curso ha sido agregado correctamente"); */
-
-      /*   si lo pongo por fuera del for aunque este repetido el codigo lo agrega y dentro del for lo agrega en todas las posiciones del array */
-        
-    }
-
-    public void imprimir(){
+    public void imprimir(int codigo){
         System.out.println();
         System.out.println("|--------------------------------------|");
         System.out.println("|            DETALLE CURSO             |");

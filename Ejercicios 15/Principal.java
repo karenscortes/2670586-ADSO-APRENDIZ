@@ -8,11 +8,9 @@ public class Principal{
 
         int size = 99;
         Curso array [] = new Curso [size];
+        int indiceCurso =0;
         int opcion = 0; 
-        Curso ejemplo = new Curso("Ejemplo", "NombreEjemplo", "TecnologiaEjemplo", 100);
-        Curso curso1 = new Curso("224010","ADSO","Tecnologia",1000);
-        Curso curso2 = new Curso("221010","BARI","Tecnologia",2000);
-    
+        
         do{
             System.out.println("|--------------------------------|");
             System.out.println("|          MENU DE CURSOS        |");
@@ -31,20 +29,52 @@ public class Principal{
 
             if(opcion>=1 && opcion<=7){
                 if(opcion == 1){
-                    ejemplo.agrgarCurso(curso1);
-                    size--;
+                    System.out.print("-> Ingrese el codigo del curso: ");
+                    String codigo = tecladoT.nextLine();
+                    int repetido = 0;  
+                    for (int i = 0; i < array.length; i++) {
+                        if (array[i]!=null && array[i].getCodigo().equals(codigo)){
+                            repetido++;
+                        }
+                    }
+
+                    if(repetido==0){
+                        System.out.print("-> Ingrese el nombre del curso "); 
+                        String nombre = tecladoT.nextLine(); 
+
+                        System.out.print("-> Ingrese el area de conocimento del curso "); 
+                        String area = tecladoT.nextLine(); 
+
+                        System.out.print("-> Ingrese la duracion en horas del curso "); 
+                        int duracion = tecladoN.nextInt(); 
+
+                        System.out.print("-> Ingrese la cantidad de temas del curso (max 15) "); 
+                        int cant = tecladoN.nextInt(); 
+
+                        Curso curso = (codigo,nombre,area,duracion)
+
+                        for(int i =0; i <= cant; i++){
+                            System.out.print("-> Ingrese un tema del curso "); 
+                            String tema = tecladoT.nextLine(); 
+                            curso.agregarTema(tema);
+                        }
+
+
+                    }else if (repetido!=0){
+                        System.out.println("-> El codigo del curso no es valido ");
+                    }
+                    
                 }else if(opcion == 2){
-                    ejemplo.imprimirListado();
+                    
                 }else if(opcion == 3){
-                    curso1.imprimir();
+
+                    
                 }else if(opcion == 4){
-                    curso1.editar("ADSI", "Tecnologia", 1200); 
+                    
                 }else if(opcion == 5){
-                    curso1.agregarTema("Programacion");
-                    curso1.agregarTema("Matematicas ");
-                    curso1.agregarTema("LenguajeJAVA");
+                    
                 }else if(opcion == 6){
-                    ejemplo.eliminarCurso("224010");
+                    
                 }else if(opcion == 7){
                     System.out.println("-> Ha salido con exito del programa "); 
                 }
