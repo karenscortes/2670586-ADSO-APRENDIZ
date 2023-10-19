@@ -53,9 +53,27 @@ public class Curso {
     Curso array [] = new Curso [size];
 
     public void agrgarCurso(Curso curso){
-        array[indiceCurso]=curso;
-        indiceCurso++; 
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].getCodigo().equals(curso.getCodigo())) {
+                System.out.println("-> El código ya corresponde a un curso existente");
+            
+            }else{
+                array[posicionInsercion] = curso;
+                indiceCurso++;
+                size--;
+
+                System.out.println("-> El curso ha sido agregado correctamente");
+            }
+        }
+
+        /* array[posicionInsercion] = curso;
+        indiceCurso++;
         size--;
+
+        System.out.println("-> El curso ha sido agregado correctamente"); */
+
+      /*   si lo pongo por fuera del for aunque este repetido el codigo lo agrega y dentro del for lo agrega en todas las posiciones del array */
+        
     }
 
     public void imprimir(){
@@ -78,7 +96,7 @@ public class Curso {
         System.out.println();
     } 
 
-    public void imprimirListado(Curso[] array){
+    public void imprimirListado(){
         System.out.println();
         System.out.println("|--------------------------------------|");
         System.out.println("|           DETALLE LISTADO            |");
@@ -107,6 +125,23 @@ public class Curso {
     public void agregarTema(String tema){
         temas[indiceTema]=tema;
         indiceTema++;
+    } 
+
+    public void eliminarCurso(String codigo){
+        for(int i=0; i<array.length; i++){
+            if(array[i]!=null){
+                if(array[i].codigo.equals(codigo)){
+                    array[i]= null;
+                    System.out.println();
+                    System.out.println("-> El curso ha sido eliminado correctamente");
+                    System.out.println();
+                }else{
+                    System.out.println();
+                    System.out.println("-> El codigo no corresponde a ningun curso");
+                    System.out.println();
+                }
+            }
+        }
     }
     
 }

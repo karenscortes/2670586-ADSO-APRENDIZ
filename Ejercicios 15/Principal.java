@@ -34,7 +34,7 @@ public class Principal{
                     ejemplo.agrgarCurso(curso1);
                     size--;
                 }else if(opcion == 2){
-                    ejemplo.imprimirListado(array);
+                    ejemplo.imprimirListado();
                 }else if(opcion == 3){
                     curso1.imprimir();
                 }else if(opcion == 4){
@@ -44,7 +44,7 @@ public class Principal{
                     curso1.agregarTema("Matematicas ");
                     curso1.agregarTema("LenguajeJAVA");
                 }else if(opcion == 6){
-
+                    ejemplo.eliminarCurso("224010");
                 }else if(opcion == 7){
                     System.out.println("-> Ha salido con exito del programa "); 
                 }
