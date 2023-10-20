@@ -24,8 +24,10 @@ public class Principal{
             System.out.println("|  6.Eliminar curso              |");
             System.out.println("|  7.Salir                       |");
             System.out.println("|--------------------------------|");
+            System.out.println();
             System.out.print("-> Ingrese la opcion que desee (1 a 7): "); 
             opcion = tecladoN.nextInt(); 
+            System.out.println();
 
             if(opcion>=1 && opcion<=7){
                 if(opcion == 1){
@@ -51,30 +53,90 @@ public class Principal{
                         System.out.print("-> Ingrese la cantidad de temas del curso (max 15) "); 
                         int cant = tecladoN.nextInt(); 
 
-                        Curso curso = (codigo,nombre,area,duracion)
+                        Curso curso = new Curso(codigo,nombre,area,duracion);
 
-                        for(int i =0; i <= cant; i++){
+                        for(int i =0; i < cant; i++){
                             System.out.print("-> Ingrese un tema del curso "); 
                             String tema = tecladoT.nextLine(); 
                             curso.agregarTema(tema);
                         }
 
+                        array[indiceCurso]=curso;
+                        indiceCurso++;
+                        System.out.println();
 
                     }else if (repetido!=0){
                         System.out.println("-> El codigo del curso no es valido ");
+                        System.out.println();
                     }
                     
                 }else if(opcion == 2){
-                    
+                    System.out.println();
+                    System.out.println("|--------------------------------------|");
+                    System.out.println("|           DETALLE LISTADO            |");
+                    System.out.println("|--------------------------------------|");
+                    System.out.println("|                                      |");
+                    System.out.println("|  Codigo      Nombre     Duracion hr  |");
+                    System.out.println("|                                      |");
+                    for(int i =0; i<array.length; i++){
+                        if(array[i]!=null){
+                            System.out.println("|  "+array[i].codigo+"       "+array[i].nombre+"         "+array[i].duracionHoras+"      |");
+                        }
+                    } 
+                    System.out.println("|--------------------------------------|");
+                    System.out.println();
                 }else if(opcion == 3){
+                    System.out.print("-> Ingrese el codigo del curso para imprimir el datalle: ");
+                    String codigo = tecladoT.nextLine();
 
-                    
+                    for(int i=0; i<array.length; i++){
+                        if (array[i]!=null && array[i].getCodigo().equals(codigo)){
+                            array[i].imprimir();
+                        }
+                    }
                 }else if(opcion == 4){
-                    
+                    System.out.print("-> Ingrese el codigo del curso para ediatarlo: ");
+                    String codigo = tecladoT.nextLine();
+
+                    for(int i=0; i<array.length; i++){
+                        if (array[i]!=null && array[i].getCodigo().equals(codigo)){
+                            System.out.print("-> Ingrese el nuevo nombre del curso "); 
+                            String nombre = tecladoT.nextLine(); 
+
+                            System.out.print("-> Ingrese el nuevo area de conocimento del curso "); 
+                            String area = tecladoT.nextLine(); 
+
+                            System.out.print("-> Ingrese la nueva duracion en horas del curso "); 
+                            int duracion = tecladoN.nextInt(); 
+
+                            array[i].editar(nombre,area,duracion);
+                            System.out.println();
+                        }
+                    }
                 }else if(opcion == 5){
-                    
+                    System.out.print("-> Ingrese el codigo del curso al que desea agregarle un tema: ");
+                    String codigo = tecladoT.nextLine();
+
+                    for(int i=0; i<array.length; i++){
+                        if (array[i]!=null && array[i].getCodigo().equals(codigo)){
+                            System.out.print("-> Ingrese un tema del curso "); 
+                            String tema = tecladoT.nextLine();
+                            array[i].agregarTema(tema);
+                        }
+                    }
                 }else if(opcion == 6){
-                    
+                    System.out.print("Ingrese el codigo del curso a eliminar: ");
+                    int codigo = tecladoT.nextInt();
+                    boolean cursoEncontradoEliminar = false;
+
+                    for (int i = 0; i < array.length; i++) {
+                        if (array[i] != null && array[i].getCodigo().equals(codigo)) {
+                            array[i] = null;
+                            System.out.println("Curso eliminado con éxito.");
+                            cursoEncontradoEliminar = true;
+                            break;
+                        }
+                    }
                 }else if(opcion == 7){
                     System.out.println("-> Ha salido con exito del programa "); 
                 }
