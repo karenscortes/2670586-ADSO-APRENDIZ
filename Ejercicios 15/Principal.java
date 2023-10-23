@@ -126,15 +126,12 @@ public class Principal{
                     }
                 }else if(opcion == 6){
                     System.out.print("Ingrese el codigo del curso a eliminar: ");
-                    int codigo = tecladoT.nextInt();
-                    boolean cursoEncontradoEliminar = false;
+                    String codigo = tecladoT.nextLine();
 
                     for (int i = 0; i < array.length; i++) {
                         if (array[i] != null && array[i].getCodigo().equals(codigo)) {
                             array[i] = null;
-                            System.out.println("Curso eliminado con éxito.");
-                            cursoEncontradoEliminar = true;
-                            break;
+                            System.out.println("Curso ha sido eliminado");
                         }
                     }
                 }else if(opcion == 7){
