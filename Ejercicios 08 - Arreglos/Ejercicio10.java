@@ -45,7 +45,7 @@ public class Ejercicio10 {
 
         System.out.println();
 
-        System.out.print("Arreglo sin repetidos: ");
+        System.out.print("Arreglo sin repetido: ");
         for (int i = 0; i < sinRepetidos.length; i++) {
             System.out.print(sinRepetidos[i]);
             if (i < sinRepetidos.length - 1) {
