@@ -6,7 +6,7 @@ public class Principal{
 
     public static void main(String[] args){
 
-        JFrame ventana1 = new JFrame();
+        /* JFrame ventana1 = new JFrame();
         ventana1.setTitle("Primer ventana"); 
         ventana1.setVisible(true);
         ventana1.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -51,8 +51,7 @@ public class Principal{
         JButton boton = new JButton(); 
         boton.setText("Enviar");
         boton.setBackground(Color.CYAN);
-
-
+        
 
         contenedor.add(etiquetaTitulo);
         contenedor.add(etiquetaCedula);
@@ -64,7 +63,10 @@ public class Principal{
         contenedor.add(boton);
         ventana1.add(contenedor);
         // ventana1.repaint();
-        ventana1.revalidate(); 
+        ventana1.revalidate();  */ 
+
+
+        Login inicio = new Login(); 
 
 
     }

@@ -18,7 +18,6 @@ public class Ejercicio07{
             aleatorio = (int)(Math.random()*(100-1+1)-1);
             System.out.println(aleatorio);
             arreglo[i] = aleatorio; 
-            invertido.unshift(aleatorio);
         }
 
         for(int i = 0; i<arreglo.length;i++){
