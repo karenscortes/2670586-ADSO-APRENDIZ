@@ -33,7 +33,6 @@ public class Prestamos extends JFrame {
         restricciones.gridy = 0;
         restricciones.gridwidth = 2;
         restricciones.gridheight = 1;
-
         restricciones.weightx = 100;
         restricciones.weighty = 1;
         restricciones.fill = GridBagConstraints.BOTH;
