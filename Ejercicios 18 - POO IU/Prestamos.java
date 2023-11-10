@@ -19,7 +19,7 @@ public class Prestamos extends JFrame {
         setResizable(false);
 
         JPanel contenedor = new JPanel();
-        contenedor.setBackground(Color.WHITE);
+        contenedor.setBackground(Color.GRAY);
         contenedor.setLayout(new GridBagLayout());
         contenedor.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 
