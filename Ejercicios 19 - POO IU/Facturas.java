@@ -197,19 +197,49 @@ public class Facturas extends JFrame {
         contenedor.add(etq_factura, restricciones); 
         restricciones.insets = new Insets(0, 0, 0, 0);
 
-        JLabel etq_productos = new JLabel();
-        etq_productos.setText("        ID               NOMBRE                   CANT ");
-        etq_productos.setFont(new Font("Arial", Font.BOLD, 15));
-        etq_productos.setHorizontalAlignment(JLabel.LEFT);
+        JLabel etq_id = new JLabel();
+        etq_id.setText("ID");
+        etq_id.setFont(new Font("Arial", Font.BOLD, 15));
+        etq_id.setHorizontalAlignment(JLabel.CENTER);
         restricciones.gridx = 0;
         restricciones.gridy = 8;
-        restricciones.gridwidth = 4; 
+        restricciones.gridwidth = 1; 
         restricciones.gridheight = 1;
         restricciones.weightx = 1;
         restricciones.weighty = 1;
         restricciones.fill = GridBagConstraints.BOTH;
         restricciones.insets = new Insets(10, 0, 5, 0);
-        contenedor.add(etq_productos, restricciones); 
+        contenedor.add(etq_id, restricciones); 
+        restricciones.insets = new Insets(0, 0, 0, 0);
+
+        JLabel etq_nombre_producto = new JLabel();
+        etq_nombre_producto.setText("NOMBRE");
+        etq_nombre_producto.setFont(new Font("Arial", Font.BOLD, 15));
+        etq_nombre_producto.setHorizontalAlignment(JLabel.CENTER);
+        restricciones.gridx = 1;
+        restricciones.gridy = 8;
+        restricciones.gridwidth = 1; 
+        restricciones.gridheight = 1;
+        restricciones.weightx = 1;
+        restricciones.weighty = 1;
+        restricciones.fill = GridBagConstraints.BOTH;
+        restricciones.insets = new Insets(10, 0, 5, 0);
+        contenedor.add(etq_nombre_producto, restricciones); 
+        restricciones.insets = new Insets(0, 0, 0, 0);
+
+        JLabel etq_cant = new JLabel();
+        etq_cant.setText("CANT");
+        etq_cant.setFont(new Font("Arial", Font.BOLD, 15));
+        etq_cant.setHorizontalAlignment(JLabel.CENTER);
+        restricciones.gridx = 2;
+        restricciones.gridy = 8;
+        restricciones.gridwidth = 1; 
+        restricciones.gridheight = 1;
+        restricciones.weightx = 1;
+        restricciones.weighty = 1;
+        restricciones.fill = GridBagConstraints.BOTH;
+        restricciones.insets = new Insets(10, 0, 5, 0);
+        contenedor.add(etq_cant, restricciones); 
         restricciones.insets = new Insets(0, 0, 0, 0);
 
         JTextField campo_texto_id = new JTextField();
