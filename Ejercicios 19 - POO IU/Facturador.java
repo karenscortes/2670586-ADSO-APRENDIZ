@@ -374,8 +374,8 @@ public class Facturador extends JFrame{
         
         for (int i=0; i<this.listaJLabels.length; i++) {
             JLabel etq_temporal = new JLabel(" ");
-            etq_temporal.setHorizontalAlignment( JLabel.RIGHT );
-            etq_temporal.setFont( new Font("Arial", Font.PLAIN, 18) );
+            etq_temporal.setHorizontalAlignment( JLabel.LEFT );
+            etq_temporal.setFont( new Font("Arial", Font.PLAIN, 15) );
             etq_temporal.setOpaque(true);
             etq_temporal.setBackground( Color.white );
             etq_temporal.setBorder( borderGris );
