@@ -56,7 +56,7 @@ public class Buscaminas extends JFrame {
 		restriccion.weighty = 1;
 		restriccion.weightx = 1;
 		restriccion.fill = GridBagConstraints.BOTH;
-        btn_inicio.setBorder( BorderFactory.createEmptyBorder(5,0, 5, 0) );
+        btn_inicio.setBorder( BorderFactory.createEmptyBorder(5,15, 5, 15) );
 		contPrincipal.add( btn_inicio, restriccion );
 
       
