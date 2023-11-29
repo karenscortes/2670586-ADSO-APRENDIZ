@@ -563,7 +563,7 @@ public class Facturador extends JFrame{
 
 		String total = String.valueOf(totalFactura);
 		
-		etq_total.setText("$ "+total);
+		etq_total.setText("$ "+totalFactura);
 		input_id_producto.requestFocus();
 	}
 

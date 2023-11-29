@@ -3,9 +3,8 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.*;
-
+import java.text.DecimalFormat;
 import java.awt.*;
-import java.sql.JDBCType;
 
 public class Ventana extends JFrame{
 
@@ -22,8 +21,10 @@ public class Ventana extends JFrame{
     GridBagConstraints condiciones;
     JPanel contItems;
     JLabel etq_temporal;
+    Materia lisMateria [];
 
-    public Ventana (){
+    public Ventana (Materia [] lisMateria){
+        this.lisMateria = lisMateria;
         initComponents();
     }
     
@@ -263,6 +264,7 @@ public class Ventana extends JFrame{
         ActionListener evento_click_registrar = new ActionListener() {
 			public void actionPerformed(ActionEvent event){
 				registrar();
+                System.out.println("hola");
 			}
 		};
 		btn_registrar.addActionListener(evento_click_registrar);
@@ -292,6 +294,22 @@ public class Ventana extends JFrame{
 	
 		campo_nota.addKeyListener( eventoKey_materia );
 
+        KeyListener eventoKey_credito = new KeyListener(){
+			public void keyPressed(KeyEvent e){
+			}
+	
+			public void keyReleased(KeyEvent e){
+
+				int tecla = e.getKeyCode(); 
+				if(tecla == 10){
+					autocomp();
+				}
+			}
+	
+			public void keyTyped(KeyEvent e){
+			}
+		};
+        campo_materia.addKeyListener( eventoKey_credito ); 
 
         this.add(contPrincipal);
         setVisible(true);
@@ -309,13 +327,17 @@ public class Ventana extends JFrame{
         suma_creditos = suma_creditos + credito; 
         float total = suma_notas / suma_creditos;
 
+        DecimalFormat formato = new DecimalFormat("#.##");
+        String total_formato = formato.format(total);
+
         String text = materia+" -> Creditos: "+credito+" -> Nota: "+nota;
         listaLabels[indice_agregar].setText(text); 
 		indice_agregar++;
 
-        String total_promedio = String.valueOf(total);
-		
-		campo_total.setText("Total: "+total_promedio);
+		campo_total.setText("Total: "+total_formato);
+        campo_materia.setText("");
+        campo_credito.setText("");
+        campo_nota.setText("");
 		campo_materia.requestFocus();
 
     } 
@@ -341,7 +363,21 @@ public class Ventana extends JFrame{
             } else {
                
                 this.listaLabels[i].setText(" ");  
+                campo_total.setText("Total: ");
             }
         }
+    }
+    
+    public void autocomp(){
+        String materia = campo_materia.getText();
+
+		for(int i = 0; i<lisMateria.length; i++){
+			if(lisMateria[i] != null && lisMateria[i].getNombre().equals(materia)){
+                float credito = lisMateria[i].getCredito();
+                String creditoString = String.valueOf(credito);
+				campo_credito.setText(creditoString);
+				campo_nota.requestFocus();
+			}
+		}
     }
 }
