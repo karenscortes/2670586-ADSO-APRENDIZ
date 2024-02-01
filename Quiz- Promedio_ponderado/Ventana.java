@@ -197,7 +197,6 @@ public class Ventana extends JFrame{
         JScrollPane scrollPane = new JScrollPane(contItems);
         scrollPane.setBorder(null);
 
-
         condiciones = new GridBagConstraints();
 
         Border borderColor = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode("#D5D5D5"));
