@@ -12,7 +12,7 @@ public class PromedioPonderado {
         listaMateria [3] = new Materia("Fisica",3);
         listaMateria [4] = new Materia("Deporte",1);
         
-        CalcularPromedio ventana = new CalcularPromedio();
+        CalcularPromedio ventana = new CalcularPromedio(listaMateria);
     }
     
 }

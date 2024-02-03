@@ -15,11 +15,13 @@ import javax.swing.border.EmptyBorder;
 
 
 public class CalcularPromedio extends javax.swing.JFrame {
+
+    private Materia[] lisMateria;
    
-    public CalcularPromedio (){
+    public CalcularPromedio (Materia [] lisMateria){
+        this.lisMateria = lisMateria;
         initComponents();
-        initAlternComponent();
-        
+        initAlternComponent();    
     }
 
     @SuppressWarnings("unchecked")
@@ -80,6 +82,18 @@ public class CalcularPromedio extends javax.swing.JFrame {
 
         etqNota.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         etqNota.setText("Nota:");
+
+        campoMateria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                completar(evt);
+            }
+        });
+
+        campoNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                enterRegistrar(evt);
+            }
+        });
 
         btnCalcular.setBackground(new java.awt.Color(0, 153, 153));
         btnCalcular.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
@@ -272,26 +286,7 @@ public class CalcularPromedio extends javax.swing.JFrame {
     
     
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        float nota = Float.parseFloat(campoNota.getText());
-        float credito = Float.parseFloat(campoCreditos.getText());
-        String materia = campoMateria.getText();
-
-        suma_notas= suma_notas + (nota*credito);
-        suma_creditos = suma_creditos + credito; 
-        float total = suma_notas / suma_creditos;
-
-        DecimalFormat formato = new DecimalFormat("#.##");
-        String total_formato = formato.format(total);
-
-        String text = materia+" -> Creditos: "+credito+" -> Nota: "+nota;
-        listaLabels[indice].setText(text); 
-	indice++;
-
-	etqTotal.setText("Total: "+total_formato);
-        campoMateria.setText("");
-        campoCreditos.setText("");
-        campoNota.setText("");
-	campoMateria.requestFocus();
+        registrar();
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -320,6 +315,58 @@ public class CalcularPromedio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLimpiarActionPerformed
     
+    public void autoCom(){
+        String materia = campoMateria.getText();
+
+		for(int i = 0; i<lisMateria.length; i++){
+			if(lisMateria[i] != null && lisMateria[i].getNombre().equals(materia)){
+                float credito = lisMateria[i].getCredito();
+                String creditoString = String.valueOf(credito);
+				campoCreditos.setText(creditoString);
+				campoNota.requestFocus();
+			}
+		}
+    }
+    
+    public void registrar(){
+       float nota = Float.parseFloat(campoNota.getText());
+        float credito = Float.parseFloat(campoCreditos.getText());
+        String materia = campoMateria.getText();
+
+        suma_notas= suma_notas + (nota*credito);
+        suma_creditos = suma_creditos + credito; 
+        float total = suma_notas / suma_creditos;
+
+        DecimalFormat formato = new DecimalFormat("#.##");
+        String total_formato = formato.format(total);
+
+        String text = materia+" -> Creditos: "+credito+" -> Nota: "+nota;
+        listaLabels[indice].setText(text); 
+	indice++;
+
+	etqTotal.setText("Total: "+total_formato);
+        campoMateria.setText("");
+        campoCreditos.setText("");
+        campoNota.setText("");
+	campoMateria.requestFocus(); 
+    }
+    
+    private void enterRegistrar(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enterRegistrar
+        int teclado = evt.getKeyCode();
+        
+        if(teclado == 10){
+            registrar();
+        }
+    }//GEN-LAST:event_enterRegistrar
+
+    private void completar(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_completar
+       int teclado = evt.getKeyCode();
+        
+        if(teclado == 10){
+            autoCom();
+        } 
+    }//GEN-LAST:event_completar
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
@@ -346,6 +393,5 @@ public class CalcularPromedio extends javax.swing.JFrame {
     int indice = 0;
     private JLabel etq_temporal;
     GridBagConstraints condiciones;
-    Materia listaMateria[];
 
 }
