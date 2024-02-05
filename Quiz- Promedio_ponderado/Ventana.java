@@ -275,23 +275,7 @@ public class Ventana extends JFrame{
 		};
 		btn_limpiar.addActionListener(evento_click_limpiar);
 
-        KeyListener eventoKey_materia = new KeyListener(){
-			public void keyPressed(KeyEvent e){
-			}
-	
-			public void keyReleased(KeyEvent e){
-				int tecla = e.getKeyCode(); 
-				if(tecla == 10){
-					registrar();
-				}
-				
-			}
-	
-			public void keyTyped(KeyEvent e){
-			}
-		};
-	
-		campo_nota.addKeyListener( eventoKey_materia );
+        
 
         KeyListener eventoKey_credito = new KeyListener(){
 			public void keyPressed(KeyEvent e){

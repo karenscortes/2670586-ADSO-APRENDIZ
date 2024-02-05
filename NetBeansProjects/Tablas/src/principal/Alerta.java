@@ -1,117 +1,120 @@
-
 package principal;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class Alerta extends javax.swing.JFrame {
 
-    public Alerta() {
+    String texto;
+   
+    public Alerta(String texto) {
+        this.texto = texto;
         initComponents();
         initAlternComponents();
     }
-
+    
+    public void initAlternComponents(){
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
+        setIconImage( getToolkit().createImage( ClassLoader.getSystemResource("imagenes/icono_warning.png") ) );
+        
+        Image img_warning = getToolkit().createImage( ClassLoader.getSystemResource("imagenes/icono_warning.png") );
+        img_warning = img_warning.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+        etqImagen.setIcon(new ImageIcon(img_warning));
+            
+        etqTexto.setText(texto);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cont = new javax.swing.JPanel();
+        contenedorPrincipal = new javax.swing.JPanel();
+        etqImagen = new javax.swing.JLabel();
         etqTitulo = new javax.swing.JLabel();
-        JL1 = new javax.swing.JLabel();
-        JL2 = new javax.swing.JLabel();
-        btnOk = new javax.swing.JButton();
+        etqTexto = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Alerta");
 
-        cont.setBackground(new java.awt.Color(0, 204, 153));
+        contenedorPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
-        etqTitulo.setFont(new java.awt.Font("Sitka Subheading", 1, 36)); // NOI18N
+        etqImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        etqTitulo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etqTitulo.setText("Advertencia");
 
-        JL1.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
-        JL1.setText("Intentelo nuevamente porfavor");
+        etqTexto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        etqTexto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etqTexto.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        JL2.setFont(new java.awt.Font("Sitka Small", 0, 14)); // NOI18N
-        JL2.setText("No es posible agregar los datos a la tabla ");
-
-        btnOk.setBackground(new java.awt.Color(153, 255, 204));
-        btnOk.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnOk.setText("OK");
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrar.setBackground(new java.awt.Color(153, 0, 0));
+        btnCerrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("OK");
+        btnCerrar.setFocusable(false);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOkActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout contLayout = new javax.swing.GroupLayout(cont);
-        cont.setLayout(contLayout);
-        contLayout.setHorizontalGroup(
-            contLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contLayout.createSequentialGroup()
-                .addGroup(contLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(JL2))
-                    .addGroup(contLayout.createSequentialGroup()
-                        .addGroup(contLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(contLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(contLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(JL1))
-                            .addGroup(contLayout.createSequentialGroup()
-                                .addGap(116, 116, 116)
-                                .addComponent(btnOk)))
-                        .addGap(0, 13, Short.MAX_VALUE)))
-                .addContainerGap())
+        javax.swing.GroupLayout contenedorPrincipalLayout = new javax.swing.GroupLayout(contenedorPrincipal);
+        contenedorPrincipal.setLayout(contenedorPrincipalLayout);
+        contenedorPrincipalLayout.setHorizontalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(etqImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(etqTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                        .addComponent(etqTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCerrar))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-        contLayout.setVerticalGroup(
-            contLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contLayout.createSequentialGroup()
+        contenedorPrincipalLayout.setVerticalGroup(
+            contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JL1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOk)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(contenedorPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(etqImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(contenedorPrincipalLayout.createSequentialGroup()
+                        .addComponent(etqTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(etqTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCerrar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(contenedorPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
-    }//GEN-LAST:event_btnOkActionPerformed
-    public void initAlternComponents(){
-        setVisible(true);
-        setTitle("Tabla Basica");
-        setLocationRelativeTo(null);
-    }
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JL1;
-    private javax.swing.JLabel JL2;
-    private javax.swing.JButton btnOk;
-    private javax.swing.JPanel cont;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JPanel contenedorPrincipal;
+    private javax.swing.JLabel etqImagen;
+    private javax.swing.JLabel etqTexto;
     private javax.swing.JLabel etqTitulo;
     // End of variables declaration//GEN-END:variables
 }

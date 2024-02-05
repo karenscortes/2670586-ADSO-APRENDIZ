@@ -283,7 +283,7 @@ public class TablaBasica extends javax.swing.JFrame {
             for (int i = 0; i < listaPersona.length; i++) {
                 
                 if(listaPersona[i].getDocumento().equals(documento)|| listaPersona[i].getCorreo().equals(correo)){
-                    Alerta ventana = new Alerta();
+                    Alerta ventana = new Alerta("Dato ya existente");
                     break;
                 }else{
                     if(listaPersona[i]==null){
@@ -308,7 +308,7 @@ public class TablaBasica extends javax.swing.JFrame {
            
         }else{
             System.out.println("no se puede agregar");
-            Alerta ventana = new Alerta();
+            Alerta ventana = new Alerta("No se puede agregar");
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 

@@ -313,19 +313,21 @@ public class CalcularPromedio extends javax.swing.JFrame {
                 etqTotal.setText("Total: ");
             }
         }
+        indice = 0;
+        campoMateria.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
     
     public void autoCom(){
         String materia = campoMateria.getText();
 
-		for(int i = 0; i<lisMateria.length; i++){
-			if(lisMateria[i] != null && lisMateria[i].getNombre().equals(materia)){
+	for(int i = 0; i<lisMateria.length; i++){
+            if(lisMateria[i] != null && lisMateria[i].getNombre().equals(materia)){
                 float credito = lisMateria[i].getCredito();
                 String creditoString = String.valueOf(credito);
-				campoCreditos.setText(creditoString);
-				campoNota.requestFocus();
-			}
-		}
+		campoCreditos.setText(creditoString);
+		campoNota.requestFocus();
+            }
+	}
     }
     
     public void registrar(){
@@ -339,7 +341,10 @@ public class CalcularPromedio extends javax.swing.JFrame {
 
         DecimalFormat formato = new DecimalFormat("#.##");
         String total_formato = formato.format(total);
-
+        
+        for (int i = 0; i < listaLabels.length; i++) {
+            
+        }
         String text = materia+" -> Creditos: "+credito+" -> Nota: "+nota;
         listaLabels[indice].setText(text); 
 	indice++;
