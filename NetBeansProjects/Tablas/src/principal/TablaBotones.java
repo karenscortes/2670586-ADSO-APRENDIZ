@@ -1,17 +1,26 @@
 package principal;
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import utils.Persona;
 import java.util.Vector;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import utils.ButtonEditor;
+import utils.ButtonRenderer;
 
-public class TablaBasica extends javax.swing.JFrame {
+public class TablaBotones extends javax.swing.JFrame {
     
     DefaultTableModel modelo; 
     Persona listaPersonas[];
     
-    public TablaBasica() {
+    public TablaBotones() {
         listaPersonas = new Persona[5];
         listaPersonas[0] = new Persona("108800", "Oscar", "Loaiza", "3333330", "oscar@mail.com");
         listaPersonas[1] = new Persona("108801", "Daniel", "Garcia", "3333331", "daniel@mail.com");
@@ -32,12 +41,20 @@ public class TablaBasica extends javax.swing.JFrame {
         
         modelo = (DefaultTableModel) tablaDatos.getModel();
         
+        tablaDatos.getColumnModel().getColumn(5).setCellEditor(new ButtonEditor(new JCheckBox()));
+        tablaDatos.getColumnModel().getColumn(5).setCellRenderer(new ButtonRenderer());
+        
+        tablaDatos.getColumnModel().getColumn(6).setCellEditor(new ButtonEditor(new JCheckBox()));
+        tablaDatos.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer());
+        
         // Tamaño de Columnas
         tablaDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
         tablaDatos.getColumnModel().getColumn(1).setPreferredWidth(150);
         tablaDatos.getColumnModel().getColumn(2).setPreferredWidth(150);
         tablaDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
         tablaDatos.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tablaDatos.getColumnModel().getColumn(5).setPreferredWidth(10);
+        tablaDatos.getColumnModel().getColumn(6).setPreferredWidth(10);
         
         // Ajuste del Orden y Ancho de Columnas
         tablaDatos.getTableHeader().setReorderingAllowed(false);
@@ -50,7 +67,7 @@ public class TablaBasica extends javax.swing.JFrame {
         tablaDatos.getColumnModel().getColumn(3).setCellRenderer(centerRender);
         
         // Alto de las filas
-        tablaDatos.setRowHeight(20);
+        tablaDatos.setRowHeight(25);
     }
     
     public void imprimirPersonas(){
@@ -62,8 +79,41 @@ public class TablaBasica extends javax.swing.JFrame {
             String telefono = listaPersonas[i].getTelefono();
             String correo = listaPersonas[i].getCorreo();
             
-            Object dato[] = new Object[]{ documento, nombres, apellidos, telefono, correo };
+            JButton btnEditar = new JButton();
+            btnEditar.setBackground(Color.white);
+            Image icono_editar = getToolkit().createImage( ClassLoader.getSystemResource("imagenes/icono_editar.png") );
+            icono_editar = icono_editar.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            btnEditar.setIcon( new ImageIcon(icono_editar) );
+            
+            JButton btnEliminar = new JButton();
+            btnEliminar.setBackground(Color.white);
+            Image icono_eliminar = getToolkit().createImage( ClassLoader.getSystemResource("imagenes/icono_eliminar.png") );
+            icono_eliminar = icono_eliminar.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            btnEliminar.setIcon( new ImageIcon(icono_eliminar) );
+            
+            Object dato[] = new Object[]{ documento, nombres, apellidos, telefono, correo, btnEditar, btnEliminar };
             modelo.addRow(dato);
+            
+            Persona temporal = listaPersonas[i];
+            TablaBotones ventanaActual = this;
+            
+            btnEditar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    Editar ventana = new Editar(temporal, ventanaActual);
+                }
+            });
+            
+            final int posicion = i;
+            btnEliminar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Eliminar ventana = new Eliminar(ventanaActual, listaPersonas, posicion);
+                }
+            });
+            
+            
         }
     }
     
@@ -93,10 +143,11 @@ public class TablaBasica extends javax.swing.JFrame {
 
         contenedorTitulo.setBackground(new java.awt.Color(204, 255, 204));
 
-        etqTitulo.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
+        etqTitulo.setBackground(new java.awt.Color(0, 204, 102));
+        etqTitulo.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         etqTitulo.setForeground(new java.awt.Color(0, 153, 102));
         etqTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etqTitulo.setText("Tabla Basica");
+        etqTitulo.setText("Tabla con Botones");
 
         javax.swing.GroupLayout contenedorTituloLayout = new javax.swing.GroupLayout(contenedorTitulo);
         contenedorTitulo.setLayout(contenedorTituloLayout);
@@ -117,33 +168,33 @@ public class TablaBasica extends javax.swing.JFrame {
 
         contenedorFormulario.setBackground(new java.awt.Color(204, 255, 204));
 
-        etqDocumento.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        etqDocumento.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
         etqDocumento.setText("Documento:");
 
         campoDocumento.setMargin(new java.awt.Insets(2, 10, 2, 10));
 
-        etqNombres.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        etqNombres.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
         etqNombres.setText("Nombres:");
 
         campoNombres.setMargin(new java.awt.Insets(2, 10, 2, 10));
 
-        etqApellidos.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        etqApellidos.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
         etqApellidos.setText("Apellidos:");
 
         campoApellidos.setMargin(new java.awt.Insets(2, 10, 2, 10));
 
-        etqTelefono.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        etqTelefono.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
         etqTelefono.setText("Telefono:");
 
         campoTelefono.setMargin(new java.awt.Insets(2, 10, 2, 10));
 
-        etqCorreo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        etqCorreo.setText("Correo Elec.:");
+        etqCorreo.setFont(new java.awt.Font("Sitka Text", 1, 16)); // NOI18N
+        etqCorreo.setText("Correo:");
 
         campoCorreo.setMargin(new java.awt.Insets(2, 10, 2, 10));
 
         btnAgregar.setBackground(new java.awt.Color(0, 153, 102));
-        btnAgregar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setText("AGREGAR");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -224,14 +275,14 @@ public class TablaBasica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Documento", "Nombres", "Apellidos", "Telefono", "Correo Elec."
+                "Documento", "Nombres", "Apellidos", "Telefono", "Correo Elec.", "", ""
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -257,7 +308,7 @@ public class TablaBasica extends javax.swing.JFrame {
             contenedorDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
