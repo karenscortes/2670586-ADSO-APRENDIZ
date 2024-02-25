@@ -1,34 +1,18 @@
 
 package bases;
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import utils.BaseDatos;
+import utils.Persona;
 
 
 public class Agregar extends javax.swing.JFrame {
-
-    Connection conexion;
-    Statement manipularDB;
     
-    public Agregar() {
+    BaseDatos datos = new BaseDatos();
+
+    
+    public Agregar(BaseDatos datos) {
+        this.datos = datos;
         initComponents();
-        
         initAlternComponent();
-        
-        String user = "root";
-        String password = "";
-        
-        String url = "jdbc:mysql://localhost:3306/app_java";
-        
-        try {
-            conexion = DriverManager.getConnection(url, user, password);
-            manipularDB = conexion.createStatement();
-            System.out.println("Conexion exitosa.");
-        } catch (SQLException ex) {
-            System.out.println("Error en conexion a BD:");
-            System.out.println(ex.getMessage());
-        }
         
     }
     
@@ -193,21 +177,14 @@ public class Agregar extends javax.swing.JFrame {
         String direccion = campoDireccion.getText(); 
         String email = campoEmail.getText(); 
         
-        boolean respuesta = false;
-        try {
-            String consulta = "INSERT INTO personas (cedula, nombres, apellidos, direccion, telefono, email) VALUES ('"+cedula+"','"+nombres+"','"+apellidos+"','"+direccion+"','"+telefono+"','"+email+"')";
-            int resp_consulta = manipularDB.executeUpdate(consulta);
-            if (resp_consulta==1) {
-                respuesta = true;
-            }
-        } catch (SQLException ex) {
-            System.out.println("--> Error Insert: " + ex.getMessage());
-        }
-        if (respuesta){
-            System.out.println("Insertado con exito");
+        Persona prueba = datos.buscarPersonas(cedula); 
+        
+        if(prueba != null){
+            System.out.println("nel");
         }else{
-            System.out.println("No se pudo insertar");
+            datos.insertarPersona(cedula, nombres, apellidos, direccion, telefono, email);
         }
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

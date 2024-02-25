@@ -8,7 +8,6 @@ import utils.BaseDatos;
 public class PanelCrear extends javax.swing.JPanel {
     
     BaseDatos datos = new BaseDatos();
-    Statement manipularDB;
     
     public PanelCrear(BaseDatos datos ) {
         this.datos = datos;

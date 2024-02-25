@@ -136,4 +136,33 @@ public class BaseDatos {
         return respuesta;
     }
     
+    public Persona buscarPersonas(String cedula){
+        Persona persona;
+        
+        String id = cedula;
+        try {
+            String consulta = "SELECT * FROM personas WHERE cedula = '"+id+"'";
+            ResultSet registros = manipularDB.executeQuery(consulta);
+            registros.next();
+            if (registros.getRow()==1) {
+
+                    String documento = registros.getString("cedula");
+                    String nombres = registros.getString("nombres");
+                    String apellidos = registros.getString("apellidos");
+                    String direccion = registros.getString("direccion");
+                    String telefono = registros.getString("telefono");
+                    String correo = registros.getString("email");
+                    
+                    persona = new Persona(documento, nombres, apellidos, direccion, telefono, correo);
+                return persona;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al ejecutar el SELECT: ");
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+    
 }

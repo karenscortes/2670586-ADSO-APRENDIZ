@@ -69,12 +69,10 @@
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton1" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="campoNombres" max="32767" attributes="0"/>
-                                  <Component id="etqNombres" max="32767" attributes="0"/>
-                                  <Component id="etqDireccion" alignment="0" pref="106" max="32767" attributes="0"/>
-                                  <Component id="campoDireccion" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="campoNombres" max="32767" attributes="0"/>
+                              <Component id="etqNombres" max="32767" attributes="0"/>
+                              <Component id="etqDireccion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campoDireccion" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="34" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">

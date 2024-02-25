@@ -1,40 +1,23 @@
 
 package bases;
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import utils.BaseDatos;
 import utils.Persona;
-import java.sql.ResultSet;
-
 
 public class Leer extends javax.swing.JFrame {
 
-    Connection conexion;
-    Statement manipularDB;
     DefaultTableModel modelo;
+    BaseDatos datos; 
+    Persona listaPersonas [] = new Persona[100];
     
-    public Leer() {
+    public Leer(BaseDatos datos) {
+        this.datos = datos;
         initComponents();
         initAlternComponent();
-        
-        String user = "root";
-        String password = "";
-        
-        String url = "jdbc:mysql://localhost:3306/app_java";
-        
-        try {
-            conexion = DriverManager.getConnection(url, user, password);
-            manipularDB = conexion.createStatement();
-            System.out.println("Conexion exitosa.");
-        } catch (SQLException ex) {
-            System.out.println("Error en conexion a BD:");
-            System.out.println(ex.getMessage());
-        }
+        imprimir();
     }
     
     public void initAlternComponent(){
@@ -62,49 +45,21 @@ public class Leer extends javax.swing.JFrame {
         tablaDatos.setRowHeight(20);
     }
     
-    public ArrayList<Persona> obtenerPersonas() {
-        ArrayList<Persona> personas = new ArrayList<>();
-
-        try {
-            String user = "root";
-            String password = "";
-            String url = "jdbc:mysql://localhost:3306/app_java";
+    public void imprimir(){
+        listaPersonas = datos.extraerPersonas();
         
-            conexion = DriverManager.getConnection(url, user, password);
-            manipularDB = conexion.createStatement();
-
-            String query = "SELECT * FROM personas";
-            ResultSet resultSet = manipularDB.executeQuery(query);
-
-            while (resultSet.next()) {
-                Persona persona = new Persona();
-                persona.setDocumento(resultSet.getString("cedula"));
-                persona.setNombres(resultSet.getString("nombres"));
-                persona.setApellidos(resultSet.getString("apellidos"));
-                persona.setTelefono(resultSet.getString("telefono"));
-                persona.setDireccion(resultSet.getString("direccion"));
-                persona.setCorreo(resultSet.getString("email"));
-                personas.add(persona);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error al obtener datos de la BD:");
-            System.out.println(ex.getMessage());
-        } finally {
-            try {
-                if (manipularDB != null) {
-                manipularDB.close();
-                }
-                if (conexion != null) {
-                conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("Error al cerrar la conexión:");
-                System.out.println(ex.getMessage());
-            }
+        modelo.setRowCount(0);
+        for (int i=0;i<listaPersonas.length && listaPersonas[i]!=null; i++) {
+            String documento = listaPersonas[i].getDocumento();
+            String nombres = listaPersonas[i].getNombres();
+            String apellidos = listaPersonas[i].getApellidos();
+            String telefono = listaPersonas[i].getTelefono();
+            String direccion = listaPersonas[i].getDireccion();
+            String correo = listaPersonas[i].getCorreo();
+            
+            Object dato[] = new Object[]{ documento, nombres, apellidos, telefono, direccion, correo };
+            modelo.addRow(dato);
         }
-
-        return personas;
-        
     }
     
 

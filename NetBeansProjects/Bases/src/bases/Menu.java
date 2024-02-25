@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import utils.BaseDatos;
 
 public class Menu extends javax.swing.JFrame {
-
-    public Menu() {
+    BaseDatos datos = new BaseDatos();
+    public Menu(BaseDatos datos) {
+        this.datos = datos;
         initComponents();
         initAlternComponent();
     }
@@ -96,11 +98,21 @@ public class Menu extends javax.swing.JFrame {
         btnActualizar.setText("EDITAR");
         btnActualizar.setFocusable(false);
         btnActualizar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setFocusable(false);
         btnEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenPrincipalLayout = new javax.swing.GroupLayout(contenPrincipal);
         contenPrincipal.setLayout(contenPrincipalLayout);
@@ -150,12 +162,21 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        Agregar ventanaAgregar = new Agregar();
+        Agregar ventanaAgregar = new Agregar(datos);
+        
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeerActionPerformed
-        Leer ventanaLeer = new Leer();
+        Leer ventanaLeer = new Leer(datos);
     }//GEN-LAST:event_btnLeerActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Eliminar ventanaEliminar = new Eliminar(datos);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        Editar ventanaEditar = new Editar(datos);
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;

@@ -58,7 +58,7 @@ public class Persona {
         return direccion;
     }
 
-    public void setDireccion(String telefono) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 

@@ -1,11 +1,14 @@
 
 package bases;
 
+import utils.BaseDatos;
+
 
 public class Bases {
 
     public static void main(String[] args) {
-       Menu ventana = new Menu();
+       BaseDatos datos = new BaseDatos();
+       Menu ventana = new Menu(datos);
     }
     
 }
